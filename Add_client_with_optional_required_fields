@@ -1,0 +1,21 @@
+echo "# Gherkin-homework" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/aletsov/Gherkin-homework.git
+git push -u origin master
+                
+@clients
+Feature: Clients tests https://pragmatic-740.inv.bg/clients/manage
+
+  Background:
+    Given user is logged in the system
+    Then user panel should contain text "a.ecov@abv.bg"
+
+  Scenario: Can navigate to clients page
+    When I navigate to Clients page
+    Then Add New Client button should contain text "<Нов клиент>"
+    When I choose radio button type "<Физическо лице>"
+    Then I create new client with name "<Иван>" and PIN "<9212016543>" and address "<Младост1>" and postal code "<1000>"and town "<София>" and country "<България>" and client number "<421342>" and telephone "<08875342115>"
+    And  I click on "<Добави клиента>" button
+    Then client message with text should be displayed "<Клиентът е добавен успешно>"

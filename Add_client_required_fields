@@ -1,0 +1,14 @@
+@clients
+Feature: Clients tests https://pragmatic-740.inv.bg/clients/manage
+
+  Background:
+    Given user is logged in the system
+    Then user panel should contain text "a.ecov@abv.bg"
+
+    Scenario: Can navigate to clients page
+      When I navigate to Clients page
+      Then Add New Client button should contain text "<Нов клиент>"
+      And  I choose radio button type "<Физическо лице>"
+      When I create new client filling required fields name "<Иван>" and address "<Младост>" and town "<София>"
+      And  I click on "<Добави клиента>"
+      Then client message with text should be displayed "<Клиентът е добавен успешно>"

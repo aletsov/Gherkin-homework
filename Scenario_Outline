@@ -1,0 +1,23 @@
+@invoices
+Feature: Items tests https://pragmatic-740.inv.bg/cashbox
+
+  Background:
+  Given user is logged in the system
+  Then user panel should contain text "a.ecov@abv.bg"
+
+  Scenario Outline: Can create new invoices with valid information
+    When I navigate to Invoices page
+    Then Add New Invoice button should contain text "Нова фактура"
+    When I choose radio button type "<Фактура>"
+    Then I create new invoice with client "<client>" and company number "<company number>" and CEO "<CEO>" and town "<Town>" and adress "<adress>" and "<Recipient>" and add item "<item>"
+    And I choose from drop down menu way of payment
+    When I click on "Създай фактурата" button
+    Then an invoice should be created successfully
+    Examples:
+      | client    | company number | CEO               | Town  | adress    | Recipient       |item
+      | Прагматик | 455662134      | Алекс Карамфилов  | София | Младост 1 | Ивана Петрова   | Баничка
+      | БНТ       | 435621331      | Асен Блатечки     | София | Люлин 10  | Георги Георгиев | Мляко
+      | Холдинг К | 422616234      | Йорданка Фъндъкова| Банкя | Гео Милев | Бойко Борисов   | Метростанция
+      | Кеш БГ    | 477663421      | Иво Андонов       | София | Разсадника| Иван Иванов     | Ливерпул
+      | Кей енд К | 455662134      | Мартин Христов    | София | Редута    | Ивана Петрова   | Гуми
+

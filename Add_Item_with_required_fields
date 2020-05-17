@@ -1,0 +1,14 @@
+@items
+Feature: Items tests https://pragmatic-740.inv.bg/objects/manage
+
+  Background:
+    Given user is logged in the system
+    Then user panel should contain text "a.ecov@abv.bg"
+
+  Scenario: Can navigate to items page
+    When I navigate to Items page
+    Then Add New Item button should contain text "Нов aртикул"
+    And I click on "Нов артикул" button
+    Then "Нов артикул" page should be loaded
+    When I create new item with required name field "<Баничка>"
+    Then item message with text should be displayed "<Артикулът е добавен успешно>"
